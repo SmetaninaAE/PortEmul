@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="wow.min.js"></script>
+    <script>new WOW().init()</script>
+    <script src="https://kit.fontawesome.com/fc5368a64a.js" crossorigin="anonymous"></script>
+    <title>Лабораторная работа № 6</title>
+</head>
+
+<script>
+    window.addEventListener('scroll', () => {
+        let distance = window.scrollY;
+        
+        document.querySelectorAll('.section').forEach((item, i)=>{
+
+            if  (item.offsetTop <= distance) {
+                
+                document.querySelectorAll(".navigationInnerItem, .navigationOuterItem").forEach((item) => {
+                    if (item.classList.contains('navigationInnerItemActive')) 
+                        item.classList.remove('navigationInnerItemActive');
+                    else if (item.classList.contains('navigationOuterItemActive')) 
+                        item.classList.remove('navigationOuterItemActive');
+                });
+
+                let tagA = document.querySelectorAll(".navigationInnerItem, .navigationOuterItem")[i];
+                if (tagA.classList[0] == 'navigationInnerItem')
+                    tagA.classList.add('navigationInnerItemActive');  
+                else if (tagA.classList[0] == 'navigationOuterItem')
+                    tagA.classList.add('navigationOuterItemActive');                  
+            }
+        });
+
+        var outerContainer = document.getElementById("outContainer");
+        var navigationMenu = document.getElementById("navMenu");
+
+        var queryOUT = document.querySelector("#outContainer");
+        var queryNAV = document.querySelector("#navMenu");
+        var queryFTR = document.querySelector("#footerID");
+             
+        var valuesOUT = queryOUT.getBoundingClientRect();
+        var valuesNAV = queryNAV.getBoundingClientRect();
+        var valuesFTR = queryFTR.getBoundingClientRect();
+
+        
+        
+        
+        if (valuesNAV.bottom > valuesFTR.top){
+            navigationMenu.style.opacity = 0+"%";
+         
+        }
+        else{
+            navigationMenu.style.opacity = 100+"%";
+          
+        }
+    });
+</script>
+<script>
+    document.ready(()=>{
+        document.querySelectorAll(".navigationInnerItem, .navigationOuterItem").forEach((current) => 
+        {
+            current.addEventListener('click', () => {
+                document.querySelectorAll(".navigationInnerItem, .navigationOuterItem").forEach((item) => {
+                    if (item.classList.contains('navigationInnerItemActive')) 
+                        item.classList.remove('navigationInnerItemActive');
+                    else if (item.classList.contains('navigationOuterItemActive')) 
+                        item.classList.remove('navigationOuterItemActive');
+                });
+            
+                if (current.classList[0] == 'navigationInnerItem')
+                    current.classList.add('navigationInnerItemActive');  
+                else if (current.classList[0] == 'navigationOuterItem')
+                    current.classList.add('navigationOuterItemActive');              
+            });
+            
+                
+        });
+    });
+
+</script>
+
+<body class="main">
+    <div class="header">
+        <div class="HELP_MANUAL">
+            <a class="buttonManual" target="_blank" href="https://github.com/SmetaninaAE/PortEmul">GITHUB</a>
+            <a class="buttonManual" target="_blank" href="html/index.html">DOCUMENTATION</a>
+            <a class="buttonManual" target="_blank" href="UserDoc.chm">CHM</a>
+        </div>
+    </div>
+
+    
+    <div class="outerContainer" id="outContainer">
+
+
+        <div class="navigationMenu" id="navMenu">
+            <ul class="navigationList">
+                <li><a class="navigationOuterItem navigationOuterItemActive" href="#Introduction">Introduction</a></li>
+                <li><a class="navigationOuterItem" href="#Chapter1">Main</a>
+                </li>
+                <li><a class="navigationOuterItem" href="#Chapter2">Optimization and settings</a>
+                </li>
+                <li><a class="navigationOuterItem" href="#Chapter3">Addition available and user interface</a>
+                </li>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <section class="section" id="Introduction">
+                <div class="sectionContainer">
+                    <div class="introduction">
+                        <p class="titleStyle">Введение</p>
+                        <p class="paragraphMargin">В мире игровой индустрии эмуляция игровых консолей играет ключевую роль, предоставляя пользователям возможность наслаждаться классическими играми на современных устройствах. Эмуляторы позволяют воссоздавать функционал различных игровых платформ, начиная от знаменитой GameBoy и заканчивая современными портативными консолями.</p>
+                        <p class="paragraphMargin">В данной предметной области мы рассмотрим три основные ветки разработки эмулятора игровых консолей, каждая из которых включает в себя необходимые модули для полноценной эмуляции и управления игровым процессом.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="Chapter1">
+                <div class="sectionContainer">
+                    <p class="titleStyle">Основной</p>
+                    <p class="textStyle">В этой части собраны модули, отвечающие за основной игровой процесс и управление игрой. Здесь реализованы основные механики игры, такие как управление фигурами на игровом поле, подсчёт очков и уровней, а также возможность приостановки и продолжения игры.</p>
+                    <p class="textStyle">Модуль эмуляции GameBoy
+                        Файл: main.py
+                        Описание: Этот модуль предоставляет возможность эмулировать работу игровой консоли GameBoy на вашем устройстве. Вы сможете насладиться классическими играми для GameBoy прямо на своем компьютере или мобильном устройстве, используя данное программное обеспечение.
+                        Модуль эмуляции PSP
+                        Файл: main.py
+                        Описание: Данный модуль позволяет эмулировать портативную игровую консоль PSP на вашем устройстве. Теперь вы можете играть в любимые игры для PSP, не имея самой консоли, просто используя ваш компьютер или мобильное устройство.
+                        Модуль эмуляции Pokemon Mini
+                        Файл: main.py
+                        Описание: Этот модуль позволяет эмулировать работу портативной игровой консоли Pokemon Mini. Теперь вы можете наслаждаться играми для Pokemon Mini на вашем устройстве, воспроизводя их с помощью данного эмулятора.
+                        Модуль аудиоэмуляции
+                        Файл: main.py
+                        Описание: Этот модуль отвечает за эмуляцию звуков и аудиоэффектов игровых консолей. Он обеспечивает воспроизведение звукового сопровождения игр таким образом, чтобы оно максимально точно соответствовало звукам оригинальных консолей.
+                        Модуль графической эмуляции
+                        Файл: main.py
+                        Описание: Данный модуль отвечает за эмуляцию графики и визуальных эффектов игровых консолей. Он воспроизводит графическое отображение игр с высокой точностью, обеспечивая при этом плавность и качество изображения.
+                        Модуль управления
+                        Файл: main.py
+                        Описание: Этот модуль обеспечивает управление процессом эмуляции игровых консолей. Он предоставляет пользователю возможность взаимодействовать с эмулируемыми играми, используя клавиатуру, геймпад или сенсорный экран.
+                        Модуль сохранения
+                        Файл: main.py
+                        Описание: Данный модуль отвечает за сохранение игрового прогресса. Он позволяет сохранять текущее состояние игры, чтобы вы могли продолжить игру с того же места в любое удобное время.</p>             
+                </div>
+            </section>
+            <section class="section" id="Chapter2">
+                <div class="sectionContainer">
+                    <p class="titleStyle">Оптимизация и настройки</p>
+                    <p class="textStyle">Модуль управления производительностью
+                        Файл: optimization_and_settings.py
+                        Описание: Этот модуль позволяет управлять производительностью эмулятора игровых консолей. Он предоставляет возможности настройки для оптимизации работы программы и повышения производительности.
+                        Модуль настройки
+                        Файл: optimization-and-settings.py
+                        Описание: Данный модуль предоставляет пользователю возможность настроить различные параметры эмуляции, такие как графика, звук, управление и другие.
+                        Модуль сетевой игры
+                        Файл: optimization_and_settings.py
+                        Описание: Этот модуль обеспечивает возможность игры по сети. Он позволяет подключаться к другим игрокам через интернет и играть вместе с ними в различные игры.
+                        Модуль отладки
+                        Файл: optimization-and-settings.py
+                        Описание: Данный модуль предоставляет инструменты для отладки эмулятора игровых консолей. Он помогает выявлять и исправлять ошибки в работе программы для обеспечения ее стабильной и безошибочной работы.
+                        Модуль синхронизации
+                        Файл: optimization-and-settings.py
+                        Описание: Этот модуль обеспечивает синхронизацию данных и состояний игры между разными устройствами. Он позволяет синхронизировать игровой прогресс между несколькими устройствами пользователя.
+                        Модуль управления энергопотреблением
+                        Файл: optimization-and-settings.py
+                        Описание: Данный модуль отвечает за управление энергопотреблением эмулируемых игровых консолей. Он позволяет оптимизировать использование энергии для продления времени автономной работы</p>
+                </div>
+            </section>
+            <section class="section" id="Chapter3">
+                <div class="sectionContainer">
+                    <p class="titleStyle">Дополнительные возможности и пользовательский интерфейс</p>
+                    <p class="textStyle">Модуль интерфейса пользователя
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Этот модуль отвечает за создание и управление пользовательским интерфейсом. Он обеспечивает удобный и интуитивно понятный интерфейс для взаимодействия пользователя с программой эмуляции игровых консолей.
+                        Модуль управления файлами
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Данный модуль обеспечивает управление файлами и хранение данных игры. Он позволяет загружать и сохранять игровой прогресс, а также управлять файлами игровых образов.
+                        Модуль обновлений
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Этот модуль отвечает за обновление программного обеспечения и контента игры. Он позволяет автоматически загружать и устанавливать доступные обновления, обеспечивая актуальность и функциональность программы.
+                        Модуль поддержки читов и кодов
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Данный модуль реализует поддержку читов, кодов и других игровых механик, связанных с внедрением изменений в игровой процесс. Он позволяет игрокам использовать различные читы и коды для получения дополнительных возможностей в играх.
+                        Модуль документации и обратной связи
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Этот модуль обеспечивает документацию по игре и возможность обратной связи пользователей. Он содержит информацию о правилах игры, управлении и других аспектах, а также предоставляет возможность пользователю задавать вопросы и оставлять отзывы.
+                        Модуль загрузки и сохранения состояний игры
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Данный модуль отвечает за загрузку и сохранение текущего состояния игры. Он позволяет сохранять игровой прогресс для продолжения игры с того же места в любое удобное время.
+                        Модуль поддержки различных форматов образов игр
+                        Файл: addition-available-and-user-interface.py
+                        Описание: Этот модуль обеспечивает поддержку различных форматов образов игр для эмуляции. Он позволяет загружать игровые образы в различных форматах и воспроизводить их с помощью эмулятора игровых консолей.</p>
+                </div>
+            </section>          
+        </div>
+    </div>
+
+    <div class="footer" id="footerID">
+        
+    </div>
+</body>
+</html>
